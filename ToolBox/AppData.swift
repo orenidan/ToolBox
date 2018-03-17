@@ -8,7 +8,29 @@
 
 import Foundation
 
+enum AppSimulationState {
+    case none, network, badNetwork, offline
+    
+    var title: String {
+        switch self {
+        
+        case .none:
+            return "none"
+        case .network:
+            return "network"
+        case .badNetwork:
+            return "Bad Network"
+        case .offline:
+            return "Offline"
+        }
+    }
+}
+
 class AppData {
+    static var shared = AppData()
+    var appSimulationState = AppSimulationState.none
+    
+    private init() {}
     static func getAllTools() -> [ToolModel] {
         return (1...32).map { ToolModel(id: $0, imageName: AppData.toolImageName(for: $0)) }
     }
@@ -40,6 +62,4 @@ extension ToolModel: Equatable, Hashable {
     var hashValue: Int {
         return id.hashValue << 15 + imageName.hashValue
     }
-    
-    
 }

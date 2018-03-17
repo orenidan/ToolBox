@@ -10,6 +10,7 @@
 		0CC559003B068E1062E5BACA /* Pods_ToolBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491450D0D201C26C80B00ADC /* Pods_ToolBox.framework */; };
 		17965E8749D78F705F8F915C /* Pods_ToolBoxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C884ABD683DAEED74805BF14 /* Pods_ToolBoxTests.framework */; };
 		543566EE205D474400BCCF93 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543566ED205D474400BCCF93 /* AppData.swift */; };
+		543566F2205D77B000BCCF93 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543566F1205D77B000BCCF93 /* SettingsVC.swift */; };
 		544800EA205D2AF20027A861 /* ToolsSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544800E9205D2AF20027A861 /* ToolsSelectVC.swift */; };
 		54622CE9205D16ED00C44F9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54622CE8205D16ED00C44F9E /* AppDelegate.swift */; };
 		54622CEB205D16ED00C44F9E /* ToolBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54622CEA205D16ED00C44F9E /* ToolBoxVC.swift */; };
@@ -33,6 +34,7 @@
 		47E76C96046804F50FC01DF9 /* Pods-ToolBoxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolBoxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToolBoxTests/Pods-ToolBoxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		491450D0D201C26C80B00ADC /* Pods_ToolBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToolBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		543566ED205D474400BCCF93 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		543566F1205D77B000BCCF93 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		544800E9205D2AF20027A861 /* ToolsSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsSelectVC.swift; sourceTree = "<group>"; };
 		54622CE5205D16ED00C44F9E /* ToolBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToolBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54622CE8205D16ED00C44F9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				54622CE8205D16ED00C44F9E /* AppDelegate.swift */,
 				54622CEA205D16ED00C44F9E /* ToolBoxVC.swift */,
 				544800E9205D2AF20027A861 /* ToolsSelectVC.swift */,
+				543566F1205D77B000BCCF93 /* SettingsVC.swift */,
 				543566ED205D474400BCCF93 /* AppData.swift */,
 				54622CEC205D16ED00C44F9E /* Main.storyboard */,
 				54622CEF205D16ED00C44F9E /* Assets.xcassets */,
@@ -351,6 +354,7 @@
 				54622CEB205D16ED00C44F9E /* ToolBoxVC.swift in Sources */,
 				54622CE9205D16ED00C44F9E /* AppDelegate.swift in Sources */,
 				543566EE205D474400BCCF93 /* AppData.swift in Sources */,
+				543566F2205D77B000BCCF93 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
