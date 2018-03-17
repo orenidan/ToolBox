@@ -23,7 +23,7 @@ class ToolBoxVC: UIViewController {
     }
     
     @IBAction func unwindToToolBoxVC(segue:UIStoryboardSegue) {
-        guard let toolsSelectVC = segue.source as? ToolsSelectVC else { fatalError() }
+        guard let toolsSelectVC = segue.source as? ToolsSelectVC else { return }
         viewModel.add(tools: toolsSelectVC.viewModel.getSelectedTools())
         tableView.reloadData()
     }

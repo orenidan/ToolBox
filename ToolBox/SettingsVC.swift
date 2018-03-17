@@ -11,7 +11,7 @@ import M13Checkbox
 
 class SettingsVC: UITableViewController {
 
-    let viewModel = SettingsViewModel()
+    var viewModel = SettingsViewModel()
     static var cellId = "\(String(describing: SettingsCell.self))"
 
     override func viewDidLoad() {
@@ -19,10 +19,12 @@ class SettingsVC: UITableViewController {
         tableView.rowHeight = 60
         tableView.tableFooterView = UIView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.selectRow(at: IndexPath(row: viewModel.indexForSelectedRow, section: 0),
+                            animated: false,
+                            scrollPosition: .none)
     }
 
     // MARK: - Table view data source
@@ -36,9 +38,13 @@ class SettingsVC: UITableViewController {
             return UITableViewCell()
         }
         cell.selectionStyle = .none
-        cell.setup(with: viewModel.simulationCells[indexPath.row])
+        cell.setup(with: viewModel.settingsCellModel(at: indexPath.row))
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectedCell(at: indexPath.row)
     }
 }
 
@@ -48,24 +54,44 @@ class SettingsCell: UITableViewCell {
             checkbox.setMarkType(markType: .radio, animated: false)
             checkbox.boxType = .circle
             checkbox.stateChangeAnimation = .bounce(.stroke)
-            checkbox.markType = .radio
         }
     }
-    @IBOutlet weak var title: UILabel!
-
+    @IBOutlet weak var title: UILabel!    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         checkbox.setCheckState(selected ? .checked : .unchecked, animated: true)
     }
     
-    func setup(with model: AppSimulationState) {
+    func setup(with model: SettingsCellModel) {
         title.text = model.title
+        checkbox.setCheckState(model.isSelected ? .checked : .unchecked, animated: false)
     }
 }
 
 struct SettingsViewModel {
-    var simulationCells: [AppSimulationState] = [.none, .network, .badNetwork, .offline]
+    var simulationCells: [SettingsCellModel] = [.none, .network, .badNetwork, .offline].map {
+        SettingsCellModel(simulationState: $0, isSelected: AppData.shared.appSimulationState == $0)
+    }
     var numberOfRows: Int {
         return simulationCells.count
+    }
+    func selectedCell(at index: Int) {
+        AppData.shared.appSimulationState = simulationCells[index].simulationState
+    }
+    func settingsCellModel(at index: Int) -> SettingsCellModel {
+        return simulationCells[index]
+    }
+    var indexForSelectedRow: Int {
+        return simulationCells.index { $0.simulationState == AppData.shared.appSimulationState } ?? 0
+    }
+}
+
+struct SettingsCellModel {
+    let simulationState: AppSimulationState
+    let isSelected: Bool
+    
+    var title: String {
+        return simulationState.title
     }
 }
 
