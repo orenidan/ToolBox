@@ -12,11 +12,30 @@ import Blueprints
 
 class ToolsSelectVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loadingView: UIView!
+
     static var cellId = "\(String(describing: ToolsSelectCell.self))"
     var viewModel = ToolsSelectViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
+    }
+    
+    @IBAction func saveTools(_ sender: Any) {
+        guard AppData.shared.isNetworkAvailable(presenter: self) else { return }
+        if viewModel.shouldShowLoadingView {
+            loadingView.alpha = 0
+            loadingView.isHidden = false
+            UIView.animate(withDuration: 0.5) { self.loadingView.alpha = 1 }
+        }
+        viewModel.saveTools()
+    }
+}
+
+// MARK: - setup
+extension ToolsSelectVC {
+    private func setupCollectionView() {
         let blueprint = VerticalBlueprintLayout(
             itemsPerRow: 3,
             itemSize: CGSize(width: 100, height: 100),
@@ -27,10 +46,10 @@ class ToolsSelectVC: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
-        
     }
 }
 
+// MARK: - Data Source / Delegate
 extension ToolsSelectVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToolsSelectVC.cellId,
@@ -55,10 +74,10 @@ extension ToolsSelectVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func changeSelectedCell(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ToolsSelectCell else { return }
         viewModel.setTool(at: indexPath.row, isSelected: cell.isSelected)
-
     }
 }
 
+// MARK: - Cell
 class ToolsSelectCell: UICollectionViewCell {
     @IBOutlet weak var toolsImageView: UIImageView!
     @IBOutlet weak var checkbox: M13Checkbox! {
@@ -88,10 +107,11 @@ class ToolsSelectCell: UICollectionViewCell {
     }
 }
 
-
+// MARK: - Model
 struct ToolsSelectViewModel {
     private var allTools: [ToolModel] = []
     private var selectedTools: Set<ToolModel> = []
+    var didSelectToolsAction: ([ToolModel]) -> Void = { _ in }
     
     init() {
         allTools = AppData.getAllTools()
@@ -116,5 +136,15 @@ struct ToolsSelectViewModel {
     
     func getSelectedTools() -> [ToolModel] {
         return Array(selectedTools)
+    }
+    
+    func saveTools() {
+        AppData.shared.delay {
+            self.didSelectToolsAction(self.getSelectedTools())
+        }
+    }
+    
+    var shouldShowLoadingView: Bool {
+        return AppData.shared.appSimulationState != .none
     }
 }

@@ -10,25 +10,46 @@ import UIKit
 
 class ToolBoxVC: UIViewController {
 
+    @IBOutlet weak var emptyStateView: UIView!
     @IBOutlet weak var tableView: UITableView!
     var viewModel = ToolBoxViewModel()
     static var cellId = "\(String(describing: ToolBoxCell.self))"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        title = "My Tool Box"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.isHidden = viewModel.isTableViewHidden
+        emptyStateView.isHidden = !viewModel.isTableViewHidden
+    }
+    
+    @IBAction func unwindToToolBoxVC(segue:UIStoryboardSegue) {}
+}
+
+// MARK: - Setup
+extension ToolBoxVC {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 60
         tableView.tableFooterView = UIView()
     }
     
-    @IBAction func unwindToToolBoxVC(segue:UIStoryboardSegue) {
-        guard let toolsSelectVC = segue.source as? ToolsSelectVC else { return }
-        viewModel.add(tools: toolsSelectVC.viewModel.getSelectedTools())
-        tableView.reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let toolsSelectVC = segue.destination as? ToolsSelectVC else { return }
+        toolsSelectVC.viewModel.didSelectToolsAction = { [weak self] selectedTools in
+            self?.viewModel.add(tools: toolsSelectVC.viewModel.getSelectedTools())
+            self?.tableView.reloadData()
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
+// MARK: - Data Source / Delegate
 extension ToolBoxVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows
@@ -45,6 +66,7 @@ extension ToolBoxVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - Cell
 class ToolBoxCell: UITableViewCell {
     @IBOutlet weak var toolImageView: UIImageView!
     @IBOutlet weak var toolLabel: UILabel!
@@ -55,11 +77,16 @@ class ToolBoxCell: UITableViewCell {
     }
 }
 
+// MARK: - Model
 struct ToolBoxViewModel {
     private var boxTools: [ToolModel] = []
     
     var numberOfRows: Int {
         return boxTools.count
+    }
+    
+    var isTableViewHidden: Bool {
+        return numberOfRows == 0
     }
     
     func getToolCellModel(forIndex index: Int) -> ToolModel {

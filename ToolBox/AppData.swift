@@ -6,22 +6,38 @@
 //  Copyright © 2018 Oren Idan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum AppSimulationState {
-    case none, network, badNetwork, offline
+    case none, network, badNetwork, noNetwork, offline
     
     var title: String {
         switch self {
-        
         case .none:
-            return "none"
+            return "No Simulation"
         case .network:
-            return "network"
+            return "Simulate Network"
         case .badNetwork:
-            return "Bad Network"
+            return "Simulate Bad Network"
+        case .noNetwork:
+            return "Simulate No Network"
         case .offline:
-            return "Offline"
+            return "Simulate Offline"
+        }
+    }
+    
+    var delayTime: Double {
+        switch self {
+        case .none:
+            return 0
+        case .network:
+            return 3
+        case .badNetwork:
+            return 10
+        case .noNetwork:
+            return 200
+        case .offline:
+            return 0
         }
     }
 }
@@ -37,6 +53,26 @@ class AppData {
     
     static func toolImageName(for index: Int) -> String {
         return "tool_\(index)"
+    }
+    
+    func delay(operation: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + appSimulationState.delayTime) {
+            operation()
+        }
+    }
+    
+    func isNetworkAvailable(presenter: UIViewController) -> Bool {
+        guard appSimulationState == .noNetwork else { return true }
+        let alertView = UIAlertController(title: "No internet connection",
+                                          message: "Please check your connection and try again",
+                                          preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Sorry :(",
+                                     style: .default,
+                                     handler: nil)
+        alertView.addAction(okAction)
+        presenter.present(alertView, animated: true)
+        
+        return false
     }
 }
 

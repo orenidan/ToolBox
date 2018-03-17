@@ -69,7 +69,7 @@ class SettingsCell: UITableViewCell {
 }
 
 struct SettingsViewModel {
-    var simulationCells: [SettingsCellModel] = [.none, .network, .badNetwork, .offline].map {
+    var simulationCells: [SettingsCellModel] = [.none, .network, .badNetwork, .noNetwork, .offline].map {
         SettingsCellModel(simulationState: $0, isSelected: AppData.shared.appSimulationState == $0)
     }
     var numberOfRows: Int {
