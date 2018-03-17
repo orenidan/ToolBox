@@ -48,12 +48,28 @@ class AppData {
     
     private init() {}
     static func getAllTools() -> [ToolModel] {
-        return (1...32).map { ToolModel(id: $0, imageName: AppData.toolImageName(for: $0)) }
+        return (1...32).map {
+            ToolModel(id: $0, imageName: AppData.toolImageName(for: $0),
+                      title:  AppData.toolName(for: $0 - 1))
+        }
     }
     
     static func toolImageName(for index: Int) -> String {
         return "tool_\(index)"
     }
+    
+    static func toolName(for index: Int) -> String {
+        guard index < toolNames.count else { return "test" }
+        return toolNames[index]
+    }
+    
+    static var toolNames = ["Cord", "Axe", "Hammer", "drill", "Shovel",
+                            "Screwdriver", "Shovel", "Jackhammer", "Paint Roller",
+                            "Wrench", "Jackhammer", "Cement Mixer", "Cement Trowel",
+                            "Pickaxe", "Chainsaw", "Work Glove", "Machete", "Painter's Tape",
+                            "Paint Can", "Sandpaper", "Jigsaw", "Ruler", "Motor Oil", "Vice",
+                            "Saw", "Pliers", "Wrench", "Screwdriver", "Measuring tape", "Hammer",
+                            "Drill", "Cement Trowel"]
     
     func delay(operation: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + appSimulationState.delayTime) {
@@ -82,7 +98,7 @@ struct ToolModel {
     let title: String
     var isSelected: Bool
     
-    init(id:Int, imageName: String, title: String = "test", isSelected: Bool = false) {
+    init(id:Int, imageName: String, title: String, isSelected: Bool = false) {
         self.id = id
         self.imageName = imageName
         self.title = title
