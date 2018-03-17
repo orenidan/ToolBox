@@ -64,16 +64,34 @@ extension ToolBoxVC: UITableViewDelegate, UITableViewDataSource {
         cell.setupCell(with: viewModel.getToolCellModel(forIndex: indexPath.row))
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let cell = tableView.cellForRow(at: indexPath) as? ToolBoxCell
+            cell?.activityIndicator.isHidden = false
+            cell?.activityIndicator.startAnimating()
+            AppData.shared.delay { [weak self] in
+                self?.viewModel.removeItem(at: indexPath.row)
+                self?.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
 }
 
 // MARK: - Cell
 class ToolBoxCell: UITableViewCell {
     @IBOutlet weak var toolImageView: UIImageView!
     @IBOutlet weak var toolLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     func setupCell(with model: ToolModel) {
         toolLabel.text = model.title
         toolImageView.image = UIImage(named: model.imageName)
+        activityIndicator.isHidden = true
     }
 }
 
@@ -91,6 +109,10 @@ struct ToolBoxViewModel {
     
     func getToolCellModel(forIndex index: Int) -> ToolModel {
         return boxTools[index]
+    }
+    
+    mutating func removeItem(at index: Int) {
+        boxTools.remove(at: index)
     }
     
     mutating func add(tools: [ToolModel]) {
