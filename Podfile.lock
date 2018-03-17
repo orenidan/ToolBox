@@ -1,0 +1,15 @@
+PODS:
+  - Blueprints (0.1.3)
+  - M13Checkbox (3.2.2)
+
+DEPENDENCIES:
+  - Blueprints
+  - M13Checkbox
+
+SPEC CHECKSUMS:
+  Blueprints: 28c43d2cecb2ae3e5eb9028444f5d023db27680e
+  M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
+
+PODFILE CHECKSUM: 640324d192b5909c50deea562b09d9aad6ccc96b
+
+COCOAPODS: 1.4.0
