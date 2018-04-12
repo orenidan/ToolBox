@@ -37,7 +37,6 @@ class SettingsVC: UITableViewController {
                                                  for: indexPath) as? SettingsCell else {
             return UITableViewCell()
         }
-        cell.selectionStyle = .none
         cell.setup(with: viewModel.settingsCellModel(at: indexPath.row))
 
         return cell

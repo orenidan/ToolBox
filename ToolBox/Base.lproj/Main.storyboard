@@ -273,8 +273,8 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simulate Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWH-lU-MP6">
-                                            <rect key="frame" x="57" y="11" width="135" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="57" y="6.5" width="212" height="33"/>
+                                            <fontDescription key="fontDescription" name="SourceSansPro-Black" family="Source Sans Pro" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
