@@ -19,6 +19,7 @@
 		54622CF0205D16ED00C44F9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54622CEF205D16ED00C44F9E /* Assets.xcassets */; };
 		54622CF3205D16ED00C44F9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54622CF1205D16ED00C44F9E /* LaunchScreen.storyboard */; };
 		54622CFE205D16ED00C44F9E /* ToolBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54622CFD205D16ED00C44F9E /* ToolBoxTests.swift */; };
+		54D210ED207B7BE200FF2CF5 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54D210EC207B7BBB00FF2CF5 /* SourceSansPro-Black.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		54622CF9205D16ED00C44F9E /* ToolBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54622CFD205D16ED00C44F9E /* ToolBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBoxTests.swift; sourceTree = "<group>"; };
 		54622CFF205D16ED00C44F9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54D210EC207B7BBB00FF2CF5 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
 		6FEB9F000969250986DA9065 /* Pods-ToolBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolBox.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToolBox/Pods-ToolBox.release.xcconfig"; sourceTree = "<group>"; };
 		C2AE19EF953E9394164B1F65 /* Pods-ToolBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToolBox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToolBox/Pods-ToolBox.debug.xcconfig"; sourceTree = "<group>"; };
 		C884ABD683DAEED74805BF14 /* Pods_ToolBoxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToolBoxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 		54622CE7205D16ED00C44F9E /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				54D210EC207B7BBB00FF2CF5 /* SourceSansPro-Black.otf */,
 				54622CE8205D16ED00C44F9E /* AppDelegate.swift */,
 				54622CEA205D16ED00C44F9E /* ToolBoxVC.swift */,
 				544800E9205D2AF20027A861 /* ToolsSelectVC.swift */,
@@ -232,6 +235,7 @@
 				54622CF3205D16ED00C44F9E /* LaunchScreen.storyboard in Resources */,
 				54622CF0205D16ED00C44F9E /* Assets.xcassets in Resources */,
 				54622CEE205D16ED00C44F9E /* Main.storyboard in Resources */,
+				54D210ED207B7BE200FF2CF5 /* SourceSansPro-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

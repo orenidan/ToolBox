@@ -25,6 +25,7 @@ class ToolBoxVC: UIViewController {
         super.viewWillAppear(animated)
         tableView.isHidden = viewModel.isTableViewHidden
         emptyStateView.isHidden = !viewModel.isTableViewHidden
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     @IBAction func unwindToToolBoxVC(segue:UIStoryboardSegue) {}
@@ -35,7 +36,7 @@ extension ToolBoxVC {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 60
+        tableView.rowHeight = 80
         tableView.tableFooterView = UIView()
     }
     

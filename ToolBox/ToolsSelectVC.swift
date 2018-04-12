@@ -37,8 +37,8 @@ class ToolsSelectVC: UIViewController {
 extension ToolsSelectVC {
     private func setupCollectionView() {
         let blueprint = VerticalBlueprintLayout(
-            itemsPerRow: 3,
-            itemSize: CGSize(width: 100, height: 100),
+            itemsPerRow: 2,
+            itemSize: CGSize(width: 150, height: 150),
             minimumInteritemSpacing: 10,
             minimumLineSpacing: 10,
             sectionInset: EdgeInsets(top: 10, left: 10, bottom: 10, right: 10))

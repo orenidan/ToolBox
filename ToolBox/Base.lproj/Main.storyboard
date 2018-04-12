@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Black.otf">
+            <string>SourceSansPro-Black</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Tool BoxVC-->
         <scene sceneID="tne-QT-ifu">
@@ -23,17 +28,18 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uk9-x5-dz3">
-                                        <rect key="frame" x="132" y="206.5" width="110" height="30"/>
+                                        <rect key="frame" x="101.5" y="200" width="171" height="43"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Black" family="Source Sans Pro" pointSize="24"/>
                                         <state key="normal" title="Tap to add tools"/>
                                         <connections>
                                             <segue destination="o1Z-Tv-GNR" kind="show" id="3Lu-OS-n1Y"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toolbox" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-9I-qY2">
-                                        <rect key="frame" x="172" y="244.5" width="30" height="30"/>
+                                        <rect key="frame" x="157" y="251" width="60" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Gd0-DE-txG"/>
-                                            <constraint firstAttribute="width" constant="30" id="VoT-cJ-bK7"/>
+                                            <constraint firstAttribute="height" constant="60" id="Gd0-DE-txG"/>
+                                            <constraint firstAttribute="width" constant="60" id="VoT-cJ-bK7"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -57,20 +63,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tool_30" translatesAutoresizingMaskIntoConstraints="NO" id="IUZ-HR-gfn">
-                                                    <rect key="frame" x="15" y="14" width="30" height="30"/>
+                                                    <rect key="frame" x="15" y="4" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="eca-gR-nnp"/>
-                                                        <constraint firstAttribute="height" constant="30" id="q4F-tQ-DNZ"/>
+                                                        <constraint firstAttribute="width" constant="50" id="eca-gR-nnp"/>
+                                                        <constraint firstAttribute="height" constant="50" id="q4F-tQ-DNZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hammer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PT-2Z-SOy">
-                                                    <rect key="frame" x="60" y="19" width="66" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="95" y="10.5" width="117" height="38"/>
+                                                    <fontDescription key="fontDescription" name="SourceSansPro-Black" family="Source Sans Pro" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-iD-Z11">
-                                                    <rect key="frame" x="340" y="20" width="20" height="20"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-iD-Z11">
+                                                    <rect key="frame" x="323" y="12" width="37" height="37"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                             <constraints>
@@ -80,7 +87,7 @@
                                                 <constraint firstItem="IUZ-HR-gfn" firstAttribute="centerY" secondItem="8wA-dt-Qp8" secondAttribute="centerY" id="Ufh-VC-4xQ"/>
                                                 <constraint firstItem="bZX-iD-Z11" firstAttribute="centerY" secondItem="8wA-dt-Qp8" secondAttribute="centerY" id="YGb-9Q-xDv"/>
                                                 <constraint firstItem="IUZ-HR-gfn" firstAttribute="leading" secondItem="8wA-dt-Qp8" secondAttribute="leadingMargin" id="ZCg-a0-hdv"/>
-                                                <constraint firstItem="9PT-2Z-SOy" firstAttribute="leading" secondItem="IUZ-HR-gfn" secondAttribute="trailing" constant="15" id="mkf-oq-S1w"/>
+                                                <constraint firstItem="9PT-2Z-SOy" firstAttribute="leading" secondItem="IUZ-HR-gfn" secondAttribute="trailing" constant="30" id="mkf-oq-S1w"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -303,11 +310,11 @@
     </scenes>
     <resources>
         <image name="settings" width="24" height="24"/>
-        <image name="tool_11" width="350" height="350"/>
-        <image name="tool_30" width="350" height="350"/>
+        <image name="tool_11" width="600" height="600"/>
+        <image name="tool_30" width="600" height="600"/>
         <image name="toolbox" width="350" height="304"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mW8-LG-E3R"/>
+        <segue reference="3Lu-OS-n1Y"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,7 +22,7 @@ enum AppSimulationState {
         case .noNetwork:
             return "Simulate No Network"
         case .offline:
-            return "Simulate Offline"
+            return "Simulate Offline?"
         }
     }
     
@@ -63,13 +63,13 @@ class AppData {
         return toolNames[index]
     }
     
-    static var toolNames = ["Cord", "Axe", "Hammer", "drill", "Shovel",
+    static var toolNames = ["Helmet", "Axe", "Hammer", "drill", "Shovel",
                             "Screwdriver", "Shovel", "Jackhammer", "Paint Roller",
-                            "Wrench", "Jackhammer", "Cement Mixer", "Cement Trowel",
-                            "Pickaxe", "Chainsaw", "Work Glove", "Machete", "Painter's Tape",
+                            "Control", "Jackhammer", "Cement Mixer", "Cement Trowel",
+                            "Pickaxe", "Chainsaw", "Cart", "Wrench", "Painter's Tape",
                             "Paint Can", "Sandpaper", "Jigsaw", "Ruler", "Motor Oil", "Vice",
                             "Saw", "Pliers", "Wrench", "Screwdriver", "Measuring tape", "Hammer",
-                            "Drill", "Cement Trowel"]
+                            "Drill", "Cement Trowel", "Cord"]
     
     func delay(operation: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + appSimulationState.delayTime) {
